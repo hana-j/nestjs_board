@@ -8,13 +8,15 @@ export class AuthController {
 
   @Post('/signup')
   signUp(
-    @Body(ValidationPipe) AuthCredentialsDto: AuthCredentialsDto,
+    @Body(ValidationPipe) authCredentialsDto: AuthCredentialsDto,
   ): Promise<void> {
-    return this.authService.signUp(AuthCredentialsDto);
+    return this.authService.signUp(authCredentialsDto);
   }
 
   @Post('/signin')
-  signIn(@Body(ValidationPipe) authCredentialsDto: AuthCredentialsDto) {
+  signIn(
+    @Body(ValidationPipe) authCredentialsDto: AuthCredentialsDto,
+  ): Promise<{ accessToken: string }> {
     return this.authService.singIn(authCredentialsDto);
   }
 }
