@@ -6,6 +6,14 @@ import { BoardsModule } from './boards/boards.module';
 import { AuthModule } from './auth/auth.module';
 
 @Module({
-  imports: [TypeOrmModule.forRoot(typeORMConfig), BoardsModule, AuthModule],
+  imports: [
+    TypeOrmModule.forRoot(typeORMConfig),
+    BoardsModule,
+    AuthModule,
+    ConfigModule.forRoot({
+      envFilePath: './env.dev',
+      isGlobal: true,
+    }),
+  ],
 })
 export class AppModule {}
